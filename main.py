@@ -10,9 +10,13 @@ from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm
 from flask_gravatar import Gravatar
 import smtplib
 from functools import wraps
+import os
+from dotenv import load_dotenv
 
-OWN_EMAIL = "vcodeit.py@gmail.com"
-OWN_PASSWORD = "gifhdrvzfnuixeoh"
+load_dotenv("/Users/mehta/PycharmProjects/Blog Application/.env")
+
+OWN_EMAIL = os.getenv("OWN_EMAIL")
+OWN_PASSWORD = os.getenv("OWN_PASSWORD")
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
