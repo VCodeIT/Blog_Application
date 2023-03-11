@@ -11,9 +11,7 @@ from flask_gravatar import Gravatar
 import smtplib
 from functools import wraps
 import os
-from dotenv import load_dotenv
 
-load_dotenv("/Users/mehta/PycharmProjects/Blog Application/.env")
 
 OWN_EMAIL = os.getenv("OWN_EMAIL")
 OWN_PASSWORD = os.getenv("OWN_PASSWORD")
