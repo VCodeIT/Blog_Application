@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, flash, request, abort
+from flask import Flask, render_template, redirect, url_for, flash, request, abort, jsonify
 from flask_bootstrap import Bootstrap
 from flask_ckeditor import CKEditor
 from datetime import date
@@ -11,6 +11,7 @@ from flask_gravatar import Gravatar
 import smtplib
 from functools import wraps
 import os
+
 
 
 OWN_EMAIL = os.getenv("OWN_EMAIL")
@@ -86,6 +87,11 @@ def admin_only(f):
 def get_all_posts():
     posts = BlogPost.query.all()
     return render_template("index.html", all_posts=posts, current_user=current_user, home=True)
+
+@app.route('/this-is-me')
+def this_is_me():
+    resp = jsonify(success=True)
+    return resp
 
 
 @app.route('/register', methods=["GET", "POST"])
